@@ -9,9 +9,9 @@ $(document).ready(function() {
         url: queryURL,
         method: "GET"
 }).then(function(response) {
-    console.log(queryURL);
+    //console.log(queryURL);
 
-    console.log(response.weather.icon);
+    console.log(response.main.temp);
 
 
     // Making Chicago weather appear on HTML. 
@@ -45,6 +45,15 @@ $(document).ready(function() {
 
     $("#weather-output").prepend(weatherDiv);
    
+    //Need to add eventlistener onclick to Search bar that will intake user's input.
+    // Need #weather-search id. 
+    $("#weather-btn").on("click", function(){
+        cityname=" "
+        var x= $("weather-search").text(cityname);
+        console.log(x);
+        $("#weather-output").prepend(weatherDiv);
+
+    })
 
 
     //var weather = $(this).attr("data-name");
@@ -52,5 +61,4 @@ $(document).ready(function() {
 
 });
 
-//Need to add eventlistener onclick to Search bar that will intake user's input. 
-//Need #weather-search id. 
+ 
