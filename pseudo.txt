@@ -1,0 +1,82 @@
+
+//Mutliple Ways of Storing WeatherOutputs 
+
+// function displayWeather(mainTemp, weatherIcon, feelsLike, humidity, windSpeed){
+//     $("#weather-output").empty();
+// var weatherDiv =$("<div class='storage'>")
+
+// var pOne = $('<p>').text("It is currently " + mainTemp + " degrees outside.");
+// weatherDiv.append(pOne);
+
+//  var image = $('<img>').attr('src', weatherIcon)
+// weatherDiv.append(image);
+
+// var pTwo = $('<p>').text("It feels like " + feelsLike + " right now");
+// weatherDiv.append(pTwo);
+
+//   var pThree = $('<p>').text("The humidity is " + humidity);
+//  weatherDiv.append(pThree);
+
+// var pFour = $('<p>').text("The wind speed is at " + windSpeed);
+// weatherDiv.append(pFour);
+
+// //Need to add UV Index
+
+// $("#weather-output").prepend(weatherDiv);
+// }
+
+
+//  // Making Chicago weather appear on HTML. 
+//  var weatherDiv = $("<div class='storage'>");
+
+//  //Storing Weather, What it Feels Like, Wind Speed Humidity, Date, Icon Representation. Appending them all to weather-output Div.
+//  var mainTemp = response.main.temp;
+//  var pOne = $('<p>').text("It is currently " + mainTemp + " degrees outside.");
+//  weatherDiv.append(pOne);
+//  //console.log("It is currently " + weather);
+
+//  var weatherIcon = response.weather.icon;
+//  var image = $('<img>').attr('src', weatherIcon)
+//  weatherDiv.append(image);
+
+//  var feelsLike = response.main.feels_like;
+//  var pTwo = $('<p>').text("It feels like " + feelsLike + " right now");
+//  weatherDiv.append(pTwo);
+//  //console.log("it feels like" + feelsLike);
+
+//  var humidity = response.main.humidity;
+//  var pThree = $('<p>').text("The humidity is " + humidity);
+//  weatherDiv.append(pThree);
+
+//  var windSpeed = response.wind.speed;
+//  var pFour = $('<p>').text("The wind speed is at " + windSpeed);
+//  weatherDiv.append(pFour);
+
+//  //Need to add UV Index
+
+
+
+
+
+
+//  //console.log("It is currently " + weather);
+ 
+ 
+//  //console.log("it feels like" + feelsLike);
+
+
+
+ // console.log(weatherDiv);
+    // console.log(pOne);
+    // console.log(image);
+    // console.log(pTwo);
+    // console.log(pThree);
+    // console.log(pFour);
+
+// var mainTemp = response.main.temp;
+// //  //console.log("It is currently " + weather);
+//  var weatherIcon = response.weather.icon;
+//  var feelsLike = response.main.feels_like;
+// //  //console.log("it feels like" + feelsLike);
+//   var humidity = response.main.humidity;
+//   var windSpeed = response.wind.speed;

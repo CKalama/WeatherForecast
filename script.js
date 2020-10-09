@@ -1,9 +1,36 @@
 //Run this function when the document is ready. 
 $(document).ready(function() {
+   // var weatherDiv = $("<div class='storage'>");
+    // console.log("first", weatherDiv);
     // Building query URL, added city name as a variable to be able to call later down in script.
     //Added a variable that user will pick
-    var cityname= "chicago";
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname  + "&units=imperial&appid=3fefd0d7d198dad398a6e3e02a1ee3b5"
+    //var cityname= "chicago";
+    //var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname  + "&units=imperial&appid=3fefd0d7d198dad398a6e3e02a1ee3b5"
+    getWeather("chicago");
+
+    //Need Event Lsitener 
+    
+    //$("#weather-output").prepend(weatherDiv);
+    $("#weather-btn").on("click", function(){
+        cityname= $("#weather-search").val().trim();
+        
+        // console.log(cityname);
+        getWeather(cityname);
+
+        //$("cityname").append(weatherDiv);
+        //var x= $("weather-search").text(cityname);
+        
+    
+    })
+function getWeather(cityName){
+    var apiKey = "3fefd0d7d198dad398a6e3e02a1ee3b5"
+    // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName  + "&units=imperial&appid=" + apiKey
+
+    //Creating Template Literal
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`
+
+    
+
 
     $.ajax({
         url: queryURL,
@@ -11,54 +38,65 @@ $(document).ready(function() {
 }).then(function(response) {
     //console.log(queryURL);
 
+    // var obj = JSON.parse(response);
+
     console.log(response.main.temp);
 
 
-    // Making Chicago weather appear on HTML. 
-    var weatherDiv = $("<div class='storage'>");
-
-    //Storing Weather, What it Feels Like, Wind Speed Humidity, Date, Icon Representation. Appending them all to weather-output Div.
-    var weather = response.main.temp;
-    var pOne = $('<p>').text("It is currently " + weather + " degrees outside.");
-    weatherDiv.append(pOne);
-    //console.log("It is currently " + weather);
-
-    var weatherIcon = response.weather.icon;
-    var image = $('<img>').attr('src', weatherIcon)
-    weatherDiv.append(image);
-
-    var feelsLike = response.main.feels_like;
-    var pTwo = $('<p>').text("It feels like " + feelsLike + " right now");
-    weatherDiv.append(pTwo);
-    //console.log("it feels like" + feelsLike);
-
-    var humidity = response.main.humidity;
-    var pThree = $('<p>').text("The humidity is " + humidity);
-    weatherDiv.append(pThree);
-
-    var windSpeed = response.wind.speed;
-    var pFour = $('<p>').text("The wind speed is at " + windSpeed);
-    weatherDiv.append(pFour);
-
-    //Need to add UV Index
 
 
-    $("#weather-output").prepend(weatherDiv);
+var weatherOutputs = {
+    mainTemp:response.main.temp,
+    weatherIcon: response.weather.icon,
+    feelsLike: response.main.feels_like,
+    humidity: response.main.humidity,
+    windSpeed: response.wind.speed
+}
+
+
+displayWeather(weatherOutputs);
    
-    //Need to add eventlistener onclick to Search bar that will intake user's input.
-    // Need #weather-search id. 
-    $("#weather-btn").on("click", function(){
-        cityname=" "
-        var x= $("weather-search").text(cityname);
-        console.log(x);
-        $("#weather-output").prepend(weatherDiv);
-
-    })
+   
 
 
     //var weather = $(this).attr("data-name");
 });
-
+}
 });
 
- 
+
+function displayWeather(weather){
+    $("#weather-output").empty();
+    var weatherDiv =$("<div class='storage'>")
+
+        var pOne = $('<p>').text("It is currently " + weather.mainTemp + " degrees outside.");
+            weatherDiv.append(pOne);
+
+        var image = $('<img>').attr('src', weather.weatherIcon)
+            weatherDiv.append(image);
+
+        var pTwo = $('<p>').text("It feels like " + weather.feelsLike + " right now");
+            weatherDiv.append(pTwo);
+
+        var pThree = $('<p>').text("The humidity is " + weather.humidity);
+            weatherDiv.append(pThree);
+
+        var pFour = $('<p>').text("The wind speed is at " + weather.windSpeed);
+            weatherDiv.append(pFour);
+
+        //Need to add UV Index
+
+$("#weather-output").prepend(weatherDiv);
+}
+
+
+
+  
+  
+
+
+
+
+
+
+
