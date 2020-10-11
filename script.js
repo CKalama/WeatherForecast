@@ -79,19 +79,19 @@ function displayWeather(weather){
         var pZero = $('<p>').text(weather.city)
             weatherDiv.append(pZero);
 
-        var pOne = $('<p>').text("It is currently " + weather.mainTemp + " degrees outside.");
+        var pOne = $('<p>').text("IT IS CURRENTLY " + weather.mainTemp + " DEGREES OUTSIDE.");
             weatherDiv.append(pOne);
 
         var image = $('<img>').attr('src', weather.weatherIcon)
             weatherDiv.append(image);
 
-        var pTwo = $('<p>').text("It feels like " + weather.feelsLike + " right now");
+        var pTwo = $('<p>').text("RIGHT NOW, IT FEELS LIKE " + weather.feelsLike+ " DEGREES.");
             weatherDiv.append(pTwo);
 
-        var pThree = $('<p>').text("The humidity is " + weather.humidity);
+        var pThree = $('<p>').text("HUMIDITY LEVEL: " + weather.humidity);
             weatherDiv.append(pThree);
 
-        var pFour = $('<p>').text("The wind speed is at " + weather.windSpeed);
+        var pFour = $('<p>').text("CURRENT WIND-SPEED: " + weather.windSpeed + "/MPH.");
             weatherDiv.append(pFour);
 
         //Need to add UV Index
