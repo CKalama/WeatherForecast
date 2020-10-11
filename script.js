@@ -56,6 +56,7 @@ var weatherOutputs = {
     feelsLike: response.main.feels_like,
     humidity: response.main.humidity,
     windSpeed: response.wind.speed
+    
 }
 
 
@@ -98,9 +99,14 @@ function displayWeather(weather){
 $("#weather-output").prepend(weatherDiv);
 }
 
+//Writing function to display Search Item into weather-history div
 function getHistory(cityName) {
-    var getCity = JSON.parse(localStorage.getItem(cityName))
-    getCity.append(document.getElementById("weather-history"));
+    if (localStorage.getItem(cityName) != null) {
+        document.getElementById("weather-history").innerHTML = localStorage.getItem("cityName");
+      }
+    //document.getElementById("weather-history").append(JSON.parse(localStorage.getItem(cityHistory)));
+    //var getCity = JSON.parse(localStorage.getItem(cityName))
+    //getCity.append(document.getElementById("weather-history"));
     
 
 }

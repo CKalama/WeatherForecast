@@ -1,0 +1,23 @@
+header {
+    background-color:blue;
+    border:2px solid red;
+    box-shadow: 3px 5px black;
+    margin-bottom:25px;
+    margin-right:25px;
+    margin-left:25px;
+}
+
+header h1 { 
+    font-style: italic;
+    color:red;
+}
+
+body {
+    background-color: gray;
+}
+
+#weather-output {
+    font-size:30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
