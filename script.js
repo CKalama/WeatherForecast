@@ -29,6 +29,10 @@ function getWeather(cityName){
     //Creating Template Literal
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`
 
+    //Setting Item in Local Storage
+    var cityHistory = localStorage.setItem('cityHistory', JSON.stringify(cityName));
+    $(cityHistory).append("#weather-history")
+
     
 
 
@@ -67,6 +71,7 @@ displayWeather(weatherOutputs);
 
 function displayWeather(weather){
     $("#weather-output").empty();
+
     var weatherDiv =$("<div class='storage'>")
 
         var pOne = $('<p>').text("It is currently " + weather.mainTemp + " degrees outside.");
