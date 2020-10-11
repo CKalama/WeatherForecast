@@ -30,8 +30,8 @@ function getWeather(cityName){
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`
 
     //Setting Item in Local Storage
-    var cityHistory = localStorage.setItem('cityHistory', JSON.stringify(cityName));
-    $(cityHistory).append("#weather-history")
+    localStorage.setItem('cityHistory', JSON.stringify(cityName));
+    
 
     
 
@@ -50,6 +50,7 @@ function getWeather(cityName){
 
 
 var weatherOutputs = {
+    city: response.name,
     mainTemp:response.main.temp,
     weatherIcon: response.weather.icon,
     feelsLike: response.main.feels_like,
@@ -74,6 +75,9 @@ function displayWeather(weather){
 
     var weatherDiv =$("<div class='storage'>")
 
+        var pZero = $('<p>').text(weather.city)
+            weatherDiv.append(pZero);
+
         var pOne = $('<p>').text("It is currently " + weather.mainTemp + " degrees outside.");
             weatherDiv.append(pOne);
 
@@ -92,6 +96,13 @@ function displayWeather(weather){
         //Need to add UV Index
 
 $("#weather-output").prepend(weatherDiv);
+}
+
+function getHistory(cityName) {
+    var getCity = JSON.parse(localStorage.getItem(cityName))
+    getCity.append(document.getElementById("weather-history"));
+    
+
 }
 
 
