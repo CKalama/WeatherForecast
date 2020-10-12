@@ -1,12 +1,24 @@
 //Run this function when the document is ready. 
 $(document).ready(function() {
+
+
+    var cityHistoryArray = []
+    var getHistory = JSON.parse(localStorage.getItem('cityHistory'))
+    //console.log(JSON.parse(getHistory));
+    for (var i=0; i<getHistory.length; i++) {
+        var button = $("<button>").text(getHistory[i])
+        //$(getHistory).append("#weather-history")
+        $("#weather-history").append(button);
+    }
+    
+
    // var weatherDiv = $("<div class='storage'>");
     // console.log("first", weatherDiv);
     // Building query URL, added city name as a variable to be able to call later down in script.
     //Added a variable that user will pick
     //var cityname= "chicago";
     //var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname  + "&units=imperial&appid=3fefd0d7d198dad398a6e3e02a1ee3b5"
-    getWeather("chicago");
+    getWeather("Chicago");
 
     //Need Event Lsitener 
     
@@ -30,7 +42,10 @@ function getWeather(cityName){
     var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${apiKey}`
 
     //Setting Item in Local Storage
-    localStorage.setItem('cityHistory', JSON.stringify(cityName));
+    
+    cityHistoryArray.push(cityName);
+
+    localStorage.setItem('cityHistory', JSON.stringify(cityHistoryArray));
     
 
     
@@ -100,16 +115,16 @@ $("#weather-output").prepend(weatherDiv);
 }
 
 //Writing function to display Search Item into weather-history div
-function getHistory(cityName) {
-    if (localStorage.getItem(cityName) != null) {
-        document.getElementById("weather-history").innerHTML = localStorage.getItem("cityName");
-      }
+//function getHistory(cityName) {
+    //if (localStorage.getItem(cityName) != null) {
+        //document.getElementById("weather-history").innerHTML = localStorage.getItem("cityName");
+      //}
     //document.getElementById("weather-history").append(JSON.parse(localStorage.getItem(cityHistory)));
     //var getCity = JSON.parse(localStorage.getItem(cityName))
     //getCity.append(document.getElementById("weather-history"));
     
 
-}
+//}
 
 
 
