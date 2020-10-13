@@ -6,9 +6,9 @@ $(document).ready(function() {
     var getHistory = JSON.parse(localStorage.getItem('cityHistory'))
     //console.log(JSON.parse(getHistory));
     for (var i=0; i<getHistory.length; i++) {
-        var button = $("<button>").text(getHistory[i])
+        var historyDiv = $("<div>").text(getHistory[i])
         //$(getHistory).append("#weather-history")
-        $("#weather-history").append(button);
+        $("#weather-history").append(historyDiv);
     }
     
 
@@ -103,7 +103,7 @@ function displayWeather(weather){
         var pTwo = $('<p>').text("RIGHT NOW, IT FEELS LIKE " + weather.feelsLike+ " DEGREES.");
             weatherDiv.append(pTwo);
 
-        var pThree = $('<p>').text("HUMIDITY LEVEL: " + weather.humidity);
+        var pThree = $('<p>').text("HUMIDITY LEVEL: " + weather.humidity + " %.");
             weatherDiv.append(pThree);
 
         var pFour = $('<p>').text("CURRENT WIND-SPEED: " + weather.windSpeed + "/MPH.");

@@ -20,12 +20,15 @@ body {
 }
 
 .output {
-    border:2px solid black;
+    border:3px solid red;
+    box-shadow: 10px 5px black;
 }
 
 #weather-output {
     color:blue;
+    text-align:center;
     font-size:30px;
+    font-weight: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
